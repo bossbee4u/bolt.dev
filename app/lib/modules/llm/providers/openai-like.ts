@@ -18,7 +18,21 @@ export default class OpenAILikeProvider extends BaseProvider {
     modelsKey: 'OPENAI_LIKE_API_MODELS',
   };
 
-  staticModels: ModelInfo[] = [];
+  staticModels: ModelInfo[] = [
+    { name: 'glm-5', label: 'GLM-5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'glm-4.7', label: 'GLM-4.7', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'glm-4.6', label: 'GLM-4.6', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'alaya-glm-5', label: 'Alaya GLM-5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'kat-coder-pro-v2', label: 'KAT Coder Pro v2', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'deepseek-v3.2', label: 'DeepSeek V3.2', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'DeepSeek-V3.1', label: 'DeepSeek V3.1', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'kimi-k2.5', label: 'Kimi K2.5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'minimax-m2.5', label: 'MiniMax M2.5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'minimax-m2.1', label: 'MiniMax M2.1', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'Qwen3-235B-A22B', label: 'Qwen3 235B A22B', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'Qwen3.5-397B-A17B', label: 'Qwen3.5 397B A17B', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'auto', label: 'Auto (Model Routing)', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+  ];
 
   async getDynamicModels(
     apiKeys?: Record<string, string>,
@@ -34,7 +48,7 @@ export default class OpenAILikeProvider extends BaseProvider {
     });
 
     if (!baseUrl || !apiKey) {
-      return [];
+      return this.staticModels;
     }
 
     try {
@@ -51,12 +65,17 @@ export default class OpenAILikeProvider extends BaseProvider {
 
       const res = (await response.json()) as OpenAIModelsResponse;
 
-      return res.data.map((model) => ({
+      const dynamicModels = (res.data || []).map((model) => ({
         name: model.id,
         label: model.id,
         provider: this.name,
-        maxTokenAllowed: 8000,
+        maxTokenAllowed: 128000,
       }));
+
+      const dynamicIds = new Set(dynamicModels.map((m) => m.name));
+      const filteredStatic = this.staticModels.filter((m) => !dynamicIds.has(m.name));
+
+      return [...filteredStatic, ...dynamicModels];
     } catch (error) {
       logger.info(`${this.name}: Could not fetch /models endpoint, checking fallback env`, error);
 
@@ -70,7 +89,7 @@ export default class OpenAILikeProvider extends BaseProvider {
         return this._parseModelsFromEnv(modelsEnv);
       }
 
-      return [];
+      return this.staticModels;
     }
   }
 

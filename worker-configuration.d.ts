@@ -3,6 +3,7 @@ interface Env {
   DEFAULT_NUM_CTX: Settings;
   ANTHROPIC_API_KEY: string;
   OPENAI_API_KEY: string;
+  OPENAI_API_BASE_URL: string;
   GROQ_API_KEY: string;
   HuggingFace_API_KEY: string;
   OPEN_ROUTER_API_KEY: string;
