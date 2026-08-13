@@ -19,19 +19,20 @@ export default class OpenAILikeProvider extends BaseProvider {
   };
 
   staticModels: ModelInfo[] = [
+    { name: 'glm-5.2', label: 'GLM-5.2', provider: 'OpenAILike', maxTokenAllowed: 128000 },
     { name: 'glm-5', label: 'GLM-5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'kat-coder-pro-v2.5', label: 'KAT Coder Pro v2.5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'DeepSeek-V4-Flash', label: 'DeepSeek V4 Flash', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'DeepSeek-V4-Pro', label: 'DeepSeek V4 Pro', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'Kimi-K2.6', label: 'Kimi K2.6', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'MiniMax-M3', label: 'MiniMax M3', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'Qwen3.6-27B', label: 'Qwen3.6 27B', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'sensenova-6.7-flash-lite', label: 'SenseNova 6.7 Flash Lite', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'sensenova-u1-fast', label: 'SenseNova U1 Fast', provider: 'OpenAILike', maxTokenAllowed: 128000 },
+    { name: 'auto', label: 'Auto (Model Routing)', provider: 'OpenAILike', maxTokenAllowed: 128000 },
     { name: 'glm-4.7', label: 'GLM-4.7', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'glm-4.6', label: 'GLM-4.6', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'alaya-glm-5', label: 'Alaya GLM-5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
     { name: 'kat-coder-pro-v2', label: 'KAT Coder Pro v2', provider: 'OpenAILike', maxTokenAllowed: 128000 },
     { name: 'deepseek-v3.2', label: 'DeepSeek V3.2', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'DeepSeek-V3.1', label: 'DeepSeek V3.1', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'kimi-k2.5', label: 'Kimi K2.5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'minimax-m2.5', label: 'MiniMax M2.5', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'minimax-m2.1', label: 'MiniMax M2.1', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'Qwen3-235B-A22B', label: 'Qwen3 235B A22B', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'Qwen3.5-397B-A17B', label: 'Qwen3.5 397B A17B', provider: 'OpenAILike', maxTokenAllowed: 128000 },
-    { name: 'auto', label: 'Auto (Model Routing)', provider: 'OpenAILike', maxTokenAllowed: 128000 },
   ];
 
   async getDynamicModels(

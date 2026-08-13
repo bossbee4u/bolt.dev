@@ -29,8 +29,12 @@ export default class OpenAIProvider extends BaseProvider {
       maxCompletionTokens: 4096,
     },
 
-    // GLM-5 model option
+    // GLM and dashboard model options
+    { name: 'glm-5.2', label: 'GLM-5.2', provider: 'OpenAI', maxTokenAllowed: 128000, maxCompletionTokens: 8192 },
     { name: 'glm-5', label: 'GLM-5', provider: 'OpenAI', maxTokenAllowed: 128000, maxCompletionTokens: 8192 },
+    { name: 'kat-coder-pro-v2.5', label: 'KAT Coder Pro v2.5', provider: 'OpenAI', maxTokenAllowed: 128000, maxCompletionTokens: 8192 },
+    { name: 'DeepSeek-V4-Pro', label: 'DeepSeek V4 Pro', provider: 'OpenAI', maxTokenAllowed: 128000, maxCompletionTokens: 8192 },
+    { name: 'DeepSeek-V4-Flash', label: 'DeepSeek V4 Flash', provider: 'OpenAI', maxTokenAllowed: 128000, maxCompletionTokens: 8192 },
     { name: 'kat-coder-pro-v2', label: 'KAT Coder Pro v2', provider: 'OpenAI', maxTokenAllowed: 128000, maxCompletionTokens: 8192 },
     { name: 'deepseek-v3.2', label: 'DeepSeek V3.2', provider: 'OpenAI', maxTokenAllowed: 128000, maxCompletionTokens: 8192 },
 
